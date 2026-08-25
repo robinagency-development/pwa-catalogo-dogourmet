@@ -49,7 +49,7 @@ function Dogourmet() {
           src={fondoRojoTop}
           alt=""
           aria-hidden="true"
-          className="absolute top-0 left-0 w-full h-full object-cover -z-10 pointer-events-none drop-shadow-md"
+          className="absolute top-0 left-0 w-full h-auto object-contain -z-10 pointer-events-none drop-shadow-md"
         />
 
         <div className="w-full flex flex-col items-center relative">
@@ -57,7 +57,7 @@ function Dogourmet() {
             <img
               src={dogourmet}
               alt="Dogourmet"
-              className="min-w-[50%] max-w-[75%] mt-12 object-contain"
+              className="min-w-[50%] max-w-[75%] mt-8 object-contain"
             />
           </div>
           
@@ -83,10 +83,10 @@ function Dogourmet() {
             <img
               src={perroIzquierda}
               alt="Perro Dogourmet"
-              className="absolute left-0 -bottom-[12%] w-[68%] sm:w-[75%] md:w-[50%] xl:w-[50%] z-20 pointer-events-none object-contain drop-shadow-lg"
+              className="absolute left-0 -top-[10%] w-[85%] z-10 pointer-events-none object-contain drop-shadow-lg"
             />
 
-            <div className="absolute right-12 sm:right-12 bottom-[38%] sm:bottom-[38%] w-[40%] sm:w-[45%] md:w-[50%] flex flex-col items-center gap-1 sm:gap-2 z-20">
+            <div className="absolute right-12 sm:right-12 top-[18%] w-[35%] flex flex-col items-center gap-1 sm:gap-2 z-20">
               <img
                 src={textoVerMas}
                 alt="VER MÁS"
@@ -96,7 +96,7 @@ function Dogourmet() {
                 src={flechaVerMas}
                 alt=""
                 aria-hidden="true"
-                className="w-[40%] h-auto cursor-pointer transition-transform hover:scale-105 mt-6"
+                className="w-[26%] h-auto cursor-pointer transition-transform hover:scale-105 mt-6"
               />
             </div>
           </div>
@@ -108,11 +108,11 @@ function Dogourmet() {
             src={fondoCrema}
             alt=""
             aria-hidden="true"
-            className="absolute top-0 left-0 w-full h-full object-cover -z-30 pointer-events-none"
+            className="absolute -top-10 left-0 w-full h-full object-cover -z-20 pointer-events-none"
           />
         )}
         <div className="w-full flex flex-col items-center relative z-10">
-          <div className="flex flex-col items-center gap-1 sm:gap-2 mb-8 sm:mb-12 md:mb-16 w-[80%]">
+          <div className="flex flex-col items-center gap-1 sm:gap-2 mb-8 sm:mb-12 md:mb-16 w-[80%] mt-30">
             <img
               src={textoAtributos}
               alt="ATRIBUTOS"
@@ -124,7 +124,7 @@ function Dogourmet() {
               className="w-[80%] h-auto -mt-1 sm:-mt-2"
             />
           </div>
-          <div className="relative w-[90%] flex justify-center items-center mb-4 sm:mb-8 z-10">
+          <div className="relative w-[100%] flex justify-center items-center mb-4 sm:mb-8 z-10">
             <img
               src={perroAtributos}
               alt="Atributos nutricionales Dogourmet con perro cobrador dorado"
@@ -137,13 +137,13 @@ function Dogourmet() {
             src={fondoRojoArriba}
             alt=""
             aria-hidden="true"
-            className="absolute top-full left-0 w-full h-auto object-cover z-20 pointer-events-none mt-[-30%] sm:mt-[-30%] md:mt-[-35%]"
+            className="absolute top-full left-0 w-full h-auto object-cover -z-20 pointer-events-none mt-[-42%]"
           />
         )}
       </section>
-      <section className="relative w-full flex flex-col items-center text-center z-10 bg-[#8B0000] pb-16">
-        <div className="w-full flex flex-col items-center relative z-20">
-          <div className="flex flex-col items-center gap-2 sm:gap-3 md:gap-4  w-[80%] mb-8 sm:mb-10 mt-4 sm:mt-8">
+      <section className="relative w-full flex flex-col items-center text-center z-10 bg-[#830D0B] pb-16">
+        <div className="w-full flex flex-col items-center relative z-20 -top-20">
+          <div className="flex flex-col items-center gap-2 sm:gap-3 md:gap-4 w-[80%] mb-8">
             <img
               src={textoProteinas}
               alt="Proteinas de alta calidad y biodisponibles"
@@ -159,7 +159,7 @@ function Dogourmet() {
             <img
               src={botonDesliza}
               alt="Botón Desliza"
-              className="w-[30vw] sm:w-[25vw] md:w-[20vw] lg:w-[15vw] max-w-[200px] h-auto drop-shadow-sm"
+              className="w-[30%] h-auto drop-shadow-sm"
             />
           </div>
           <div className="w-full flex flex-col items-center gap-1 sm:gap-2 my-8 sm:my-10 relative z-10">
@@ -185,7 +185,7 @@ function Dogourmet() {
           />
         </div>
     </section>
-      <section className="relative w-full pt-12 sm:pt-20 pb-16 sm:pb-28 flex flex-col items-center text-center z-10 bg-[#8B0000]">
+      <section className="relative w-full pt-12 sm:pt-20 pb-16 sm:pb-28 flex flex-col items-center text-center z-10 bg-[#830D0B]">
         {fondoAmarilloTop && (
         <>
           <img
@@ -202,16 +202,16 @@ function Dogourmet() {
         </>
         )}
         
-        <div className="flex flex-col items-center gap-2 sm:gap-3 md:gap-4 w-full mb-6 sm:mb-10">
+        <div className="flex flex-col items-center gap-2 sm:gap-3 md:gap-4 w-full -mt-4">
           <img
             src={textoEnergiaProtegida}
             alt="Energia Protegida"
-            className="mt-12 w-[60%] h-auto drop-shadow-sm"
+            className="mt-12 w-[60%] h-auto drop-shadow-sm mt-12"
           />
           <img
             src={textoActuamosComo}
             alt="Que aportan proteínas de alta biodisponibilidad"
-            className="w-[90%] h-auto opacity-95 mt-1"
+            className="w-[85%] h-auto opacity-95 mt-3"
           />
         </div>
         <div className="w-full flex flex-col items-center relative">
@@ -219,7 +219,7 @@ function Dogourmet() {
             <img
               src={botonNuestrasTasasNutricionales}
               alt="Nuestras tablas nutricionales"
-              className="mt-6 w-[90%] h-auto"
+              className="mt-10 w-[90%] h-auto"
             />
           </div>
           <div className="w-full flex justify-center items-center gap-4 scrollbar-none bg-[#FCB212]">
@@ -246,7 +246,7 @@ function Dogourmet() {
         )}
         
       </section>
-      <section className="relative w-full flex flex-col items-center text-center bg-[#8B0000] z-20 overflow-visible">
+      <section className="relative w-full flex flex-col items-center text-center bg-[#830D0B] z-20 overflow-visible">
         <div className="w-full flex flex-col items-center relative">
            <div className="relative w-full flex flex-col items-center overflow-visible">
             {fondoAmarilloBottom && (

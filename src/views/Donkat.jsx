@@ -5,6 +5,11 @@ import textoFormulaDisenada from '../assets/donkat/texto-formula-disenada.svg'
 import gatoFormula from '../assets/donkat/gato-formula.svg'
 import textoNuestrasPresentaciones from '../assets/donkat/texto-nuestras-presentaciones.svg'
 import fondoAmarilloMiddle from '../assets/donkat/fondo-amarillo-middle.svg'
+import carrousel1 from '../assets/donkat/adultos16.svg'
+import carrousel2 from '../assets/donkat/adultos7.svg'
+import carrousel3 from '../assets/donkat/adultos1-1.svg'
+import carrousel4 from '../assets/donkat/gaticos7.svg'
+import carrousel5 from '../assets/donkat/gaticos1.svg'
 import textoNutricionales from '../assets/donkat/texto-pack-completo.svg'
 import tablaNutricional from '../assets/donkat/tabla-nutricional.svg'
 import tablaNutricional2 from '../assets/donkat/tabla-nutricional-2.svg'
@@ -17,14 +22,9 @@ import botonVisitarNutricionCanina from '../assets/ohmygat/boton-visitar-nutrici
 import perroBottom from '../assets/ohmygat/perro-bottom.svg'
 import ImageCarousel from '../components/ImageCarousel'
 
-
-import carrousel1 from '../assets/ohmygat/proteina-balanceada.svg'
-
-
-
 function Donkat() {
   return (
-    <main className="w-full min-h-screen flex flex-col items-center select-none bg-[#782793]">
+    <main className="w-full min-h-screen flex flex-col items-center select-none bg-[#BB0694]">
       <section className="pt-0 relative w-full flex flex-col items-center text-center z-0 overflow-hidden bg-[#BB0694]">
         <div className="w-full flex flex-col items-center relative">
           <div className="w-full flex justify-center">
@@ -49,42 +49,46 @@ function Donkat() {
           </div>
         </div>
       </section>
-      <section className="relative w-full pt-12 px-4 flex flex-col items-center text-center -mt-8 sm:-mt-14 md:-mt-20 z-0 overflow-visible  bg-[#BB0694]">
-        <div className="relative w-[90%] flex justify-center items-center mb-4 sm:mb-8 z-10">
+      <section className="relative w-full pt-12 px-4 flex flex-col items-center text-center -mt-8 sm:-mt-14 md:-mt-20 z-50 overflow-visible bg-transparent">
+        <div className="relative z-50 w-[90%] flex justify-center items-center -mb-8 sm:-mb-12 md:-mb-16">
           <img
             src={gatoFormula}
             alt="Atributos funcionales"
-            className="w-full h-auto object-contain"
+            className="relative z-50 w-full h-auto object-contain"
           />
         </div>
       </section>
-      {/*<section className="relative w-full flex flex-col items-center text-center z-40 pb-16 bg-[#FFDC99]">
+      <section className="relative w-full flex flex-col items-center text-center z-40 pb-16">
         <div className="relative w-full flex flex-col justify-center items-center gap-4 scrollbar-none">
           <img
             src={fondoAmarilloMiddle}
             alt=""
             aria-hidden="true"
-            className="absolute inset-x-0 -top-16 w-full h-auto object-contain -z-30 pointer-events-none drop-shadow-md"
+            className="absolute inset-x-0 -top-4 w-full h-auto object-contain -z-30 pointer-events-none drop-shadow-md"
           />
           <div className="relative z-10 w-full flex flex-col items-center mt-6 sm:mt-10 md:mt-14">
             <img
               src={textoNuestrasPresentaciones}
               alt="Nuestras tablas nutricionales"
-              className="w-[70%] sm:w-[62%] md:w-[55%] h-auto"
+              className="w-[65%] h-auto"
             />
           </div>
-          <div className="mb-6 sm:mb-10 mt-12">
+          <div className="w-[60%] mb-2 mt-12">
             <ImageCarousel
-              className="mt-4 mb-2"
+              className="mt-1 mb-0"
               items={[
-                { src: carrousel1, alt: 'Tabla Nutricional Cachorros' },
+                { src: carrousel1, alt: 'Adultos 17 Kilos' },
+                { src: carrousel2, alt: 'Adultos 7 Kilos' },
+                { src: carrousel3, alt: 'Adultos 1.1 Kilos' },
+                { src: carrousel4, alt: 'Gatitos 7 Kilos' },
+                { src: carrousel5, alt: 'Gatitos 1 Kilo' },
               ]}
             />
           </div>
         </div>
-      </section>*/}
-      <section className="relative w-full flex flex-col items-center text-center z-20 pb-10 ">
-        <div className="w-full flex flex-col items-center relative z-20">
+      </section>
+      <section className="relative w-full flex flex-col items-center text-center z-20 bg-[#782793]">
+        <div className="w-full flex flex-col items-center relative z-20 mt-10">
           <div className="flex flex-col items-center gap-2 w-[85%] mt-16 mb-10">
             <img
               src={textoNutricionales}
@@ -104,7 +108,7 @@ function Donkat() {
         </div>
       </section>
 
-      <section className="relative w-full flex flex-col items-center text-center z-20 overflow-visible pt-14 sm:pt-16 md:pt-20">
+      <section className="relative w-full flex flex-col items-center text-center z-20 overflow-visible pt-14 sm:pt-16 md:pt-20 bg-[#782793]">
         <div className="w-full flex flex-col items-center relative min-h-[280px] sm:min-h-[320px] md:min-h-[380px]">
             {fondoAmarillo && (
               <img
@@ -147,10 +151,10 @@ function Donkat() {
             className="relative w-full h-auto object-cover pointer-events-none drop-shadow-lg z-0"
           />
           <div className="absolute inset-0 w-full h-full flex flex-col items-center justify-center overflow-visible z-10">
-            <div className="w-full h-auto flex justify-center relative z-30 pr-4 sm:pr-8 md:pr-12">
+            <div className="w-full h-auto flex justify-center relative z-30 pl-4">
               <Link
                 to="/dogourmet"
-                className="transition-transform hover:scale-105 active:scale-95 relative z-30 w-[80%] sm:w-[75%] md:w-[75%]"
+                className="transition-transform hover:scale-105 active:scale-95 relative z-30 w-[80%]"
                 aria-label="Ir a catálogo de Nutrición Canina"
               >
                 <img
