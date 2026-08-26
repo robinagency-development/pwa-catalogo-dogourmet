@@ -54,7 +54,7 @@ a {
   position: relative;
 }
 .bgblue{
-  background-color: #005382;
+  background-color: #008DC1;
 }
 .home-champs {
   min-height: 100vh;
@@ -145,94 +145,11 @@ a {
   opacity: 0.95;
 }
 
-.home-start-section {
-  position: relative;
-  z-index: 10;
-  width: 100%;
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 12px 24px 4px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 12px;
-}
-
 .home-start-title {
-  width: min(74vw, 535px);
+  width: 75%;
   height: auto;
   margin-bottom: 2px;
   filter: drop-shadow(0 3px 2px rgba(0, 0, 0, 0.18));
-}
-
-.home-nutrition-button {
-  width: min(61vw, 440px);
-  height: auto;
-  display: block;
-}
-
-.home-brand-row {
-  position: relative;
-  z-index: 10;
-  width: 100%;
-  max-width: 1000px;
-  margin: 4px auto 0;
-  padding: 8px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-.home-brand-logos-wrap {
-  width: 74%;
-  padding-left: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-start;
-}
-
-.home-brand-logos {
-  width: 100%;
-  height: auto;
-  object-fit: contain;
-  filter: drop-shadow(0 3px 2px rgba(0, 0, 0, 0.24));
-}
-
-.home-test-badge {
-  width: min(34%, 168px);
-  margin-left: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 0;
-  padding: 0;
-  background: transparent;
-}
-
-.home-test-badge-img {
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.home-footer {
-  position: relative;
-  z-index: 10;
-  width: calc(100% - 32px);
-  margin: auto auto 0;
-  padding: 16px 20px 20px;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 32px 32px 0 0;
-  background: white;
-  text-align: center;
-  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.24);
-}
-
-@media (min-width: 640px) {
-  .home-footer {
-    width: calc(100% - 48px);
-    padding-inline: 24px;
-  }
 }
 
 @media (max-width: 1024px) {
@@ -291,77 +208,11 @@ a {
     width: clamp(220px, 52vw, 378px);
   }
 
-  .home-start-section {
-    flex: 0 0 auto;
-    padding: clamp(8px, 1.9dvh, 24px) 20px 0;
-    gap: clamp(8px, 1.15dvh, 15px);
-  }
-
   .home-start-title {
     width: clamp(305px, 74vw, 535px);
     margin-bottom: clamp(0px, 0.25dvh, 3px);
   }
 
-  .home-nutrition-button {
-    width: clamp(280px, 60vw, 429px);
-    max-height: clamp(82px, 11dvh, 140px);
-  }
-
-  .home-brand-row {
-    flex: 1 1 auto;
-    min-height: clamp(82px, 13dvh, 166px);
-    margin-top: 0;
-    padding: 0 clamp(12px, 2.2vw, 16px) clamp(2px, 0.6dvh, 8px);
-    align-items: end;
-  }
-
-  .home-brand-logos-wrap {
-    width: 66%;
-    padding-left: clamp(2px, 1.4vw, 10px);
-    padding-bottom: clamp(4px, 1.4dvh, 18px);
-  }
-
-  .home-test-badge {
-    width: clamp(92px, 24vw, 150px);
-    margin-left: auto;
-    margin-right: clamp(2px, 0.6vw, 8px);
-    margin-bottom: clamp(-18px, -1.1dvh, -8px);
-  }
-
-  .home-footer {
-    flex: 0 0 auto;
-    width: calc(100% - clamp(28px, 7vw, 48px));
-    max-height: clamp(128px, 15.5dvh, 198px);
-    padding: clamp(12px, 1.7dvh, 20px) clamp(16px, 3.5vw, 24px) clamp(10px, 1.7dvh, 22px);
-    overflow: hidden;
-  }
-
-  .home-footer p:first-child {
-    margin-bottom: clamp(4px, 0.6dvh, 8px);
-    font-size: clamp(9px, 1.55vw, 12px);
-    line-height: 1.2;
-  }
-
-  .home-footer p:nth-child(2) {
-    max-width: 520px;
-    margin-bottom: clamp(6px, 1dvh, 12px);
-    font-size: clamp(7.4px, 1.35vw, 10px);
-    line-height: 1.15;
-  }
-
-  .home-footer div {
-    padding-top: clamp(5px, 0.8dvh, 10px);
-  }
-
-  .home-footer span {
-    font-size: clamp(9px, 1.45vw, 10.5px);
-    line-height: 1.05;
-  }
-
-  .home-footer a {
-    font-size: clamp(10px, 1.65vw, 12px);
-    line-height: 1.05;
-  }
 }
 
 @media (min-width: 768px) and (max-width: 1024px) {
@@ -395,39 +246,10 @@ a {
     width: clamp(350px, 42vw, 430px);
   }
 
-  .home-start-section {
-    gap: clamp(12px, 1.15dvh, 16px);
-    padding-top: clamp(14px, 1.6dvh, 22px);
-  }
-
   .home-start-title {
     width: clamp(540px, 66vw, 675px);
   }
 
-  .home-nutrition-button {
-    width: clamp(455px, 51vw, 520px);
-    max-height: 170px;
-  }
-
-  .home-brand-row {
-    min-height: clamp(170px, 16dvh, 220px);
-    padding-inline: clamp(28px, 5vw, 52px);
-  }
-
-  .home-brand-logos-wrap {
-    width: 58%;
-  }
-
-  .home-test-badge {
-    width: clamp(132px, 16vw, 170px);
-    margin-right: clamp(16px, 2vw, 22px);
-    margin-bottom: clamp(-22px, -1dvh, -12px);
-  }
-
-  .home-footer {
-    width: min(86%, 880px);
-    max-height: clamp(138px, 12dvh, 164px);
-  }
 }
 
 @media (max-width: 390px), (max-height: 700px) and (max-width: 1024px) {
@@ -449,26 +271,22 @@ a {
     max-width: 78vw;
   }
 
-  .home-start-section {
-    gap: clamp(7px, 1dvh, 10px);
-    padding-top: clamp(6px, 1.2dvh, 10px);
-  }
-
   .home-start-title {
-    width: clamp(286px, 76vw, 330px);
-  }
-
-  .home-nutrition-button {
-    width: clamp(258px, 70vw, 300px);
-    max-height: 98px;
+    width: clamp(220px, 72vw, 300px);
   }
 
   .home-brand-row {
-    min-height: clamp(70px, 11dvh, 92px);
+    bottom: 20px;
+    min-height: 64px;
+    padding-inline: 4px;
   }
 
-  .home-footer {
-    max-height: clamp(112px, 17dvh, 128px);
+}
+
+/* Avoid floating install icon overlapping the Home art composition on mobile/tablet */
+@media (max-width: 1024px) {
+  body:has(.home-canvas) .pwa-install-floating {
+    display: none;
   }
 }
 
@@ -489,42 +307,9 @@ a {
   bottom: 0;
   left: 0;
   width: 100%;
-  min-width: 300px;
-  max-width: 680px;
   height: auto;
   pointer-events: none;
   z-index: 1;
-}
-
-/* Interactive Button Hover & Tap */
-.home-interactive-btn {
-  display: block;
-  cursor: pointer;
-  outline: none;
-  transition: transform 180ms cubic-bezier(0.34, 1.56, 0.64, 1), filter 180ms ease;
-  filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.25));
-}
-
-.home-interactive-btn:hover {
-  transform: translateY(-2px) scale(1.02);
-  filter: drop-shadow(0 10px 20px rgba(0, 0, 0, 0.3));
-}
-
-.home-interactive-btn:active {
-  transform: translateY(1px) scale(0.98);
-  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.2));
-}
-
-.home-test-badge {
-  cursor: pointer;
-  outline: none;
-  transition: transform 220ms cubic-bezier(0.34, 1.56, 0.64, 1), filter 220ms ease;
-  filter: drop-shadow(0 8px 18px rgba(0, 0, 0, 0.3));
-}
-
-.home-test-badge:hover {
-  transform: translateY(-3px) scale(1.06) rotate(1deg);
-  filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.4));
 }
 
 .home-test-badge:active {
