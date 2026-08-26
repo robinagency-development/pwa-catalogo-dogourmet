@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import logoEmpresasPolar from '../assets/home/logo-empresas-polar.svg'
 import textoPresentes from '../assets/home/textp-presentes.svg'
@@ -13,6 +14,9 @@ import logosDogourmet from '../assets/home/logosdogourmet.svg'
 import patitasBadge from '../assets/home/patitas.svg'
 
 function Home() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <main className="home-canvas bgblue">
       <div className="home-container bgblue">

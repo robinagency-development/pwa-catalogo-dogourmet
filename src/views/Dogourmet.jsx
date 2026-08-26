@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { Link, Route, Routes, useNavigate } from 'react-router-dom'
 import dogourmet from '../assets/dogourmet/dogourmet.svg'
 import textoExquisitas from '../assets/dogourmet/texto-exquisitas-recetas.svg'
@@ -42,6 +42,21 @@ import fondoRojoArriba from '../assets/dogourmet/fondo-rojo-arriba.svg'
 import ImageCarousel from '../components/ImageCarousel'
 
 function Dogourmet() {
+  const handleGoToAtributos = (event) => {
+    const atributosSection = document.getElementById('atributos')
+
+    if (!atributosSection) {
+      return
+    }
+
+    event.preventDefault()
+    atributosSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    window.history.replaceState(null, '', '/dogourmet#atributos')
+  }
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <main className="w-full min-h-screen bg-[#FFF8E7] flex flex-col items-center select-none">
       <section className="relative w-full pt-10 sm:pt-16 md:pt-24 pb-20 sm:pb-32 md:pb-40 flex flex-col items-center text-center z-10">
@@ -85,20 +100,21 @@ function Dogourmet() {
               alt="Perro Dogourmet"
               className="absolute left-0 -top-[10%] w-[85%] z-10 pointer-events-none object-contain drop-shadow-lg"
             />
-
-            <div className="absolute right-12 sm:right-12 top-[18%] w-[35%] flex flex-col items-center gap-1 sm:gap-2 z-20">
-              <img
-                src={textoVerMas}
-                alt="VER MÁS"
-                className="w-full h-auto cursor-pointer transition-transform hover:scale-105"
-              />
-              <img
-                src={flechaVerMas}
-                alt=""
-                aria-hidden="true"
-                className="w-[26%] h-auto cursor-pointer transition-transform hover:scale-105 mt-6"
-              />
-            </div>
+            <Link to="/dogourmet#atributos" onClick={handleGoToAtributos}>
+              <div className="absolute right-12 sm:right-12 top-[18%] w-[35%] flex flex-col items-center gap-1 sm:gap-2 z-20">
+                <img
+                  src={textoVerMas}
+                  alt="VER MÁS"
+                  className="w-full h-auto cursor-pointer transition-transform hover:scale-105"
+                />
+                <img
+                  src={flechaVerMas}
+                  alt=""
+                  aria-hidden="true"
+                  className="w-[26%] h-auto cursor-pointer transition-transform hover:scale-105 mt-6"
+                />
+              </div>
+            </Link>
           </div>
         </div>
       </section>
@@ -124,7 +140,7 @@ function Dogourmet() {
               className="w-[80%] h-auto -mt-1 sm:-mt-2"
             />
           </div>
-          <div className="relative w-[100%] flex justify-center items-center mb-4 sm:mb-8 z-10">
+          <div id="atributos" className="relative w-[100%] flex justify-center items-center mb-4 sm:mb-8 z-10">
             <img
               src={perroAtributos}
               alt="Atributos nutricionales Dogourmet con perro cobrador dorado"

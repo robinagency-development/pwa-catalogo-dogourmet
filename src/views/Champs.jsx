@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { Link, Route, Routes, useNavigate } from 'react-router-dom'
 import logoChamps from '../assets/champs/champs.svg'
 import fondoTop from '../assets/champs/fondo-top.svg'
@@ -24,9 +24,12 @@ import fondoAzulBottom from '../assets/champs/fondo-azul-bottom.svg'
 import tablaNutricional from '../assets/champs/tabla-nutricional.svg'
 
 function Champs() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <main className="home-champs">
-      <div className="home-container">
+      <div className="home-container !min-h-0 !justify-normal !overflow-visible">
         <header className="relative z-10 w-full h-screen md:h-auto md:aspect-[720/607] overflow-hidden flex items-center justify-center mb-10">
           <img
             src={fondoTop}
@@ -69,16 +72,16 @@ function Champs() {
             className="absolute w-full h-auto object-cover pointer-events-none -z-20 -top-30 lg:-top-50"
           />
           <div className="relative w-full flex flex-col items-center overflow-hidden">
-            <div className="w-full flex flex-col items-center gap-1 sm:gap-2 my-8 sm:my-10 relative z-10">
+            <div className="w-full flex flex-col items-center gap-1 sm:gap-2 my-16 relative z-10">
               <img
                 src={textoNuestros}
                 alt="Nuestros"
-                className="w-[50%] h-auto"
+                className="w-[40%] h-auto mt-12"
               />
               <img
                 src={textoSabores}
                 alt="Sabores"
-                className="w-[70%] h-auto -mt-1 sm:-mt-2"
+                className="w-[60%] h-auto -mt-1 sm:-mt-2"
               />
             </div>
             <div className="w-full flex justify-center items-center gap-4 scrollbar-none relative z-10">
@@ -86,7 +89,7 @@ function Champs() {
                 <img
                   src={carrousel1}
                   alt="Tabla Nutricional Cachorros"
-                  className="w-[80%] h-auto object-contain mb-20 lg:mb-46"
+                  className="w-[70%] h-auto object-contain mb-50 lg:mb-46"
                 />
               </div>
             </div>
@@ -99,23 +102,23 @@ function Champs() {
               />
             )}
           </div>
-          <div className="flex flex-col items-center gap-2 w-[80%] mb-10">
+          <div className="flex flex-col items-center gap-2 w-[80%] mb-10 mt-2">
             <img
               src={textoNuestrasTablas}
               alt="Nuestras tablas"
-              className="w-[65%] h-auto -mt-1 sm:-mt-2"
+              className="w-[65%] h-auto mb-4"
             />
             <img
               src={textoNutricionales}
               alt="Nutricionales"
-              className="w-[85%] h-auto -mt-1 sm:-mt-2"
+              className="w-[80%] h-auto"
             />
           </div>
           <div className="w-full flex justify-center items-center gap-4 z-40">
             <img
               src={tablaNutricional}
               alt="Tabla Nutricional"
-              className="w-[80%] h-auto"
+              className="w-[90%] h-auto"
             />
           </div>
         </div>
@@ -127,22 +130,22 @@ function Champs() {
                 src={fondoAmarilloTop}
                 alt=""
                 aria-hidden="true"
-                className="absolute -top-30 sm:-top-14 md:-top-20 lg:-top-45 left-0 w-full h-auto object-cover -z-30 pointer-events-none"
+                className="absolute -top-45 left-0 w-full h-auto object-cover -z-30 pointer-events-none"
               />
             )}
-          <div className="flex flex-col items-center gap-2 mb-8 sm:mb-12 mt-10 w-full">
+          <div className="flex flex-col items-center gap-2 mb-8 sm:mb-12 mt-6 w-full">
             <img
               src={textoHazTap}
               alt="Haz Tap"
-              className="w-32 sm:w-48 md:w-[240px] lg:w-[40%] xl:w-[40%] h-auto"
+              className="w-[30%] h-auto mb-4"
             />
             <img
               src={textoConoceSobre}
               alt="Conoce Sobre"
-              className="w-76 sm:w-104 md:w-[480px] lg:w-[90%] xl:w-[90%] h-auto"
+              className="w-76 w-[80%] h-auto mb-4"
             />
           </div>
-          <div className="flex flex-row justify-center items-center gap-3 sm:gap-6 md:gap-8 w-full">
+          <div className="flex flex-row justify-center items-center gap-3 sm:gap-6 md:gap-8 w-[95%]">
             <Link to="/supercan" className="transition-transform hover:scale-110 active:scale-95">
               <img
                 src={botonSuperCan}
@@ -176,10 +179,10 @@ function Champs() {
             className="relative w-full h-auto object-cover pointer-events-none drop-shadow-lg z-0"
           />
           <div className="absolute inset-0 w-full h-full flex flex-col items-center justify-center overflow-visible z-10">
-            <div className="w-full h-auto flex justify-end relative z-30 pr-4 sm:pr-8 md:pr-12 mt-8 sm:mt-12 md:mt-16">
+            <div className="w-full h-auto flex justify-end relative z-30 pr-4 sm:pr-8 md:pr-12 mt-24">
               <Link
                 to="/donkat"
-                className="transition-transform hover:scale-105 active:scale-95 relative z-30 w-[65%] sm:w-[60%] md:w-[55%]"
+                className="transition-transform hover:scale-105 active:scale-95 relative z-30 w-[62%]"
                 aria-label="Ir a catálogo de Nutrición Felina"
               >
                 <img
@@ -192,7 +195,7 @@ function Champs() {
             <img
               src={gatoBottom}
               alt="Gato asomándose"
-              className="absolute bottom-0 left-0 w-[50%] h-auto object-contain z-20 pointer-events-none"
+              className="absolute bottom-0 left-0 w-[46%] h-auto object-contain z-40 pointer-events-none"
             />
           </div>
         </div>

@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import donkat from '../assets/donkat/donkat.svg'
 import textoParaLosMasKool from '../assets/donkat/texto-para-los-mas-kool.svg'
@@ -23,6 +24,9 @@ import perroBottom from '../assets/ohmygat/perro-bottom.svg'
 import ImageCarousel from '../components/ImageCarousel'
 
 function Donkat() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <main className="w-full min-h-screen flex flex-col items-center select-none bg-[#BB0694]">
       <section className="pt-0 relative w-full flex flex-col items-center text-center z-0 overflow-hidden bg-[#BB0694]">
@@ -126,7 +130,7 @@ function Donkat() {
             />
           </div>
           <div className="flex flex-row justify-center items-center gap-3 sm:gap-6 md:gap-8 w-full px-4 sm:px-8 md:px-10">
-            <Link to="/donkat" className="transition-transform hover:scale-110 active:scale-95 w-[35%]">
+            <Link to="/ohmygat" className="transition-transform hover:scale-110 active:scale-95 w-[35%]">
               <img
                 src={botonOhmygat}
                 alt="Oh My Gat"

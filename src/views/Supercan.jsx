@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react'
+import { useState, useMemo, useEffect } from 'react'
 import { Link, Route, Routes, useNavigate } from 'react-router-dom'
 import logoSupercan from '../assets/supercan/supercan.svg'
 import fondoTop from '../assets/supercan/fondo-top-supercan.svg'
@@ -10,50 +10,40 @@ import adultosCarne from '../assets/supercan/adultos-carne.svg'
 import adultosPollo from '../assets/supercan/adultos-pollo.svg'
 import carneCereales from '../assets/supercan/carne-cereal.svg'
 import fondoAzulBottom from '../assets/supercan/fondo-azul-bottom.svg'
-
-
 import textoHuellitas from '../assets/supercan/texto-huellitas-por-explorar.svg'
 import textoConoceSobre from '../assets/supercan/texto-conoce-sobre.svg'
 import botonChamps from '../assets/supercan/boton-champs.svg'
 import botonDogourmet from '../assets/supercan/boton-dogourmet.svg'
 import botonVolverHome from '../assets/supercan/boton-volver-home.svg'
-
-
 import botonNuestrasTasasNutricionales from '../assets/supercan/boton-nuestras-tasas-nutricionales.svg'
-
-
 import carrousel1 from '../assets/supercan/nutricion-carne-pollo.svg'
 import carrousel2 from '../assets/supercan/nutricion-carne-cereales.svg'
 import botonVisitarNutricionFelina from '../assets/supercan/boton-visitar-nutricion-felina.svg'
 import gatoBottom from '../assets/dogourmet/gato-bottom.svg'
 import ImageCarousel from '../components/ImageCarousel'
-
-
-
-import fondoAmarilloBottom from '../assets/dogourmet/fondo-amarillo-bottom.svg'
-import fondoAmarilloTop from '../assets/champs/fondo-amarillo-top.svg'
 import fondoBlancoBottom from '../assets/champs/fondo-blanco-bottom.svg'
 import textoNuestros from '../assets/champs/texto-nuestros.svg'
 import textoSabores from '../assets/champs/texto-sabores.svg'
 
-
-
 function Supercan() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <main className="home-champs">
       <div className="home-container !min-h-0 !justify-normal">
-        <header className="relative z-10 w-full aspect-[720/759] overflow-hidden flex items-center justify-center bg-[#004587]">
+        <header className="relative z-10 w-full max-w-none aspect-[720/759] overflow-hidden flex items-center justify-center bg-[#004587]">
           <img
             src={fondoTop}
             alt=""
             aria-hidden="true"
-            className="absolute inset-0 w-full h-full object-contain -z-10 pointer-events-none"
+            className="absolute inset-0 w-full h-full object-cover -z-10 pointer-events-none"
           />
           <div className="w-full flex flex-col items-center mx-auto justify-center w-full">
             <img
               src={logoSupercan}
               alt="Supercan"
-              className="h-auto w-auto min-w-[35%] max-w-[55%] lg:w-[60%] xl:w-[70%]  object-contain mb-5"
+              className="h-auto w-[50%] object-contain mb-14"
             />
             <img
               src={textoLaTranquilidad}
@@ -68,7 +58,7 @@ function Supercan() {
             <img
               src={textoNuestraFormula}
               alt="Nuestra fórmula"
-              className="w-[60%] mt-5 h-auto drop-shadow-sm"
+              className="w-[60%] mt-5 h-auto drop-shadow-sm mb-10"
             />
           </div>
         </header>
@@ -155,7 +145,7 @@ function Supercan() {
               className="w-[76%] h-auto"
             />
           </div>
-          <div className="flex flex-row justify-center items-center gap-3 sm:gap-6 md:gap-8 w-full mt-12">
+          <div className="flex flex-row justify-center items-center gap-3 sm:gap-6 md:gap-8 w-[95%] mt-12">
             <Link to="/dogourmet" className="transition-transform hover:scale-110 active:scale-95">
               <img
                 src={botonDogourmet}
@@ -207,7 +197,7 @@ function Supercan() {
                 <img
                   src={gatoBottom}
                   alt="Gato asomándose"
-                  className="absolute bottom-0 right-0 w-[60%] h-auto object-contain z-20 pointer-events-none"
+                  className="absolute -bottom-10 right-0 w-[60%] h-auto object-contain z-20 pointer-events-none"
                 />
               </div>
             </div>

@@ -246,7 +246,7 @@ a {
     overflow: hidden;
   }
 
-  .home-container {
+  .home-canvas .home-container {
     max-width: none;
     height: 100dvh;
     min-height: 0;
