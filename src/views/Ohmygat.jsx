@@ -8,6 +8,7 @@ import gatoIzquierda from '../assets/ohmygat/gato-izquierda.svg'
 import textoVerMas from '../assets/ohmygat/texto-baja-para-mas-info.svg'
 import flechaVerMas from '../assets/ohmygat/flecha-abajo.svg'
 import fondoBlancoMedium from '../assets/ohmygat/fondo-blanco-abajo.svg'
+import fondoBlancoTabla from '../assets/ohmygat/fondo-blanco-tabla.svg'
 import textoAtributos from '../assets/ohmygat/texto-atributos.svg'
 import textoFuncionales from '../assets/ohmygat/texto-funcionales.svg'
 import gatoAtributos from '../assets/ohmygat/gato-atributos.svg'
@@ -15,6 +16,10 @@ import carrousel1 from '../assets/ohmygat/proteina-balanceada.svg'
 import carrousel2 from '../assets/ohmygat/triple-proteina.svg'
 import carrousel3 from '../assets/ohmygat/omega3.svg'
 import carrousel4 from '../assets/ohmygat/extracto-levadura.svg'
+import carrouselpre1 from '../assets/ohmygat/ohmygat-500g.svg'
+import carrouselpre2 from '../assets/ohmygat/ohmygat-1500g.svg'
+import textoCaseros from '../assets/ohmygat/texto-caseros.svg'
+import textoYDelicados from '../assets/ohmygat/texto-y-delicados.svg'
 import textoAlimentacionPerfecta from '../assets/ohmygat/texto-alimentacion-perfecta.svg'
 import textoNutricionales from '../assets/ohmygat/texto-ohmygat-garantiza-digestion.svg'
 import tablaNutricional from '../assets/ohmygat/tabla-nutricional.svg'
@@ -23,6 +28,9 @@ import botonVolverHome from '../assets/ohmygat/boton-volver-home.svg'
 import textoHuellitasPorExplorar from '../assets/ohmygat/texto-huellitas-por-explorar.svg'
 import textoConoceMas from '../assets/ohmygat/texto-conoce-mas.svg'
 import fondoAzulClaroBottom from '../assets/ohmygat/fondo-azul-claro-footer.svg'
+import fondoAzulMiddle from '../assets/ohmygat/fondo-azul-middle.svg'
+import fondoAzulClaroMiddle from '../assets/ohmygat/fondo-azul-claro-middle.svg'
+import textoDisponible from '../assets/ohmygat/texto-disponible-presentaciones.svg'
 import fondoAzulBottom from '../assets/ohmygat/fondo-azul-bottom.svg'
 import botonVisitarNutricionCanina from '../assets/ohmygat/boton-visitar-nutricion.svg'
 import perroBottom from '../assets/ohmygat/perro-bottom.svg'
@@ -111,18 +119,22 @@ function Ohmygat() {
             <img
               src={gatoAtributos}
               alt="Atributos funcionales"
-              className="w-full h-auto object-contain"
+              className="w-full z-[100] h-auto object-contain"
             />
           </div>
         </div>
       </section>
-
-
-
-
-
       <section className="relative w-full flex flex-col items-center text-center">
-        <div className="w-full flex flex-col items-center mx-auto justify-center">
+        
+        {fondoAzulMiddle && (
+          <img
+            src={fondoAzulMiddle}
+            alt=""
+            aria-hidden="true"
+            className="absolute -top-55 left-0 z-[70] w-full h-auto object-contain pointer-events-none"
+          />
+        )}
+        <div className="w-full flex flex-col items-center mx-auto justify-center z-[80] ">
           <ImageCarousel
             className="mt-4 mb-2"
             items={[
@@ -134,10 +146,65 @@ function Ohmygat() {
           />
         </div>
       </section>
-      
+      <section className="relative z-10 w-full flex flex-col items-center text-center overflow-hidden">
+        <div className="relative z-0 w-full flex flex-col justify-center items-center gap-4 scrollbar-none">
+          {fondoAzulClaroMiddle && (
+            <img
+              src={fondoAzulClaroMiddle}
+              alt=""
+              aria-hidden="true"
+              className="absolute top-0 left-0 z-0 w-full h-auto object-contain pointer-events-none"
+            />
+          )}
+          <div className="relative min-h-[350px] w-full mt-10">
+            <img
+              src={ohmygat}
+              alt="Oh My Gat"
+              className="absolute left-[5%] top-12 z-10 w-[52%] pointer-events-none object-contain drop-shadow-lg"
+            />
+            <div className="absolute right-[8%] top-32 z-0 flex w-[40%] flex-col items-center gap-1">
+              <img
+                src={textoCaseros}
+                alt="Caseros"
+                className="w-full h-auto cursor-pointer transition-transform hover:scale-105"
+              />
+              <img
+                src={textoYDelicados}
+                alt=""
+                aria-hidden="true"
+                className="w-full -top-20 h-auto cursor-pointer transition-transform hover:scale-105"
+              />
+            </div>
+            <div className="absolute left-0 -bottom-16 z-10 flex w-full flex-col items-center">
+              <img
+                src={textoDisponible}
+                alt="Disponible en nuestras presentaciones"
+                className="h-auto w-[78%] object-contain"
+              />
+            </div>
+          </div>
+          <div className="w-full mb-2 bg-[#0099D0]">
+            <ImageCarousel
+              className="mt-16 mb-10"
+              items={[
+                { src: carrouselpre1, alt: 'Presentación 500g' },
+                { src: carrouselpre2, alt: 'Presentación 1.5kg' },
+              ]}
+            />
+          </div>
+        </div>
+      </section>
       <section className="relative w-full flex flex-col items-center text-center z-20 pb-16 bg-[#FFFFFF]">
-        <div className="w-full flex flex-col items-center relative z-20 bg-[#FFFFFF]">
         
+        <div className="w-full flex flex-col items-center relative z-20 bg-[#FFFFFF]">        
+          {fondoBlancoTabla && (
+            <img
+              src={fondoBlancoTabla}
+              alt=""
+              aria-hidden="true"
+              className="absolute -top-32 left-0 -z-10 w-full h-auto object-contain pointer-events-none"
+            />
+          )}
           <div className="flex flex-col items-center gap-2 w-[80%] mb-10">
             <img
               src={textoAlimentacionPerfecta}
