@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import fondo from '../assets/testseleccion/fondo.png'
 import gatoYPerro from '../assets/testseleccion/gato-y-perro.png'
 import queHuellitasMarcan from '../assets/testseleccion/que-huellitas-marcan.png'
@@ -31,6 +32,7 @@ import respuestaPerroA from '../assets/answersDogs/personalidad-a-perros.webp'
 import respuestaPerroB from '../assets/answersDogs/personalidad-b-perros.webp'
 import respuestaPerroC from '../assets/answersDogs/personalidad-c-perros.webp'
 import respuestaPerroD from '../assets/answersDogs/personalidad-d-perros.webp'
+import botonVolverHome from '../assets/dogourmet/boton-volver-home.svg'
 
 const questionSets = {
   guau: [
@@ -55,9 +57,11 @@ const answerSets = {
 }
 
 function TestSeleccion() {
+  const navigate = useNavigate()
   const [team, setTeam] = useState('')
   const [step, setStep] = useState('selection')
   const [questionIndex, setQuestionIndex] = useState(0)
+  const [questionImageLoaded, setQuestionImageLoaded] = useState(false)
   const [answers, setAnswers] = useState([])
   const [formData, setFormData] = useState({
     nombre: '',
@@ -70,7 +74,8 @@ function TestSeleccion() {
 
   useEffect(() => {
     window.scrollTo(0, 0)
-  }, []);
+  }, [])
+
   const fields = [
     { name: 'nombre', label: 'Nombre y Apellido', icon: iconoNombre, type: 'text' },
     { name: 'correo', label: 'Correo electrónico', icon: iconoCorreo, type: 'email' },
@@ -87,6 +92,7 @@ function TestSeleccion() {
 
   const startQuestions = (event) => {
     event.preventDefault()
+    setQuestionImageLoaded(false)
     setStep('questions')
   }
 
@@ -97,10 +103,40 @@ function TestSeleccion() {
     setQuestionIndex(0)
   }
 
+  const goBack = () => {
+    if (step === 'selection') {
+      if (team) {
+        setTeam('')
+        return
+      }
+
+      navigate('/')
+      return
+    }
+
+    if (step === 'questions') {
+      if (questionIndex > 0) {
+        setAnswers((current) => current.slice(0, -1))
+        setQuestionImageLoaded(false)
+        setQuestionIndex((current) => current - 1)
+        return
+      }
+
+      setStep('selection')
+      return
+    }
+
+    setAnswers((current) => current.slice(0, -1))
+    setQuestionImageLoaded(false)
+    setQuestionIndex(4)
+    setStep('questions')
+  }
+
   const selectAnswer = (letter) => {
     const nextAnswers = [...answers, letter]
     if (questionIndex < 4) {
       setAnswers(nextAnswers)
+      setQuestionImageLoaded(false)
       setQuestionIndex((current) => current + 1)
       return
     }
@@ -127,6 +163,16 @@ function TestSeleccion() {
       />
 
       <div className="relative z-10 mx-0 flex h-full w-full flex-col items-center">
+        <button
+          type="button"
+          onClick={goBack}
+          aria-label={step === 'selection' && !team ? 'Volver al Home' : 'Volver al paso anterior'}
+          title={step === 'selection' && !team ? 'Volver al Home' : 'Volver al paso anterior'}
+          className="fixed bottom-4 right-4 z-[110] grid h-30 w-30 place-items-center p-1 shadow-lg transition-transform hover:scale-105 active:scale-95 sm:bottom-6 sm:right-6"
+        >
+          <img src={botonVolverHome} alt="" aria-hidden="true" className="h-full w-full object-contain" />
+        </button>
+
         {step === 'result' ? (
           <button
             type="button"
@@ -145,31 +191,36 @@ function TestSeleccion() {
             <img
               src={questionSets[team][questionIndex].image}
               alt={`Pregunta ${questionIndex + 1}`}
+              onLoad={() => setQuestionImageLoaded(true)}
               className="h-auto w-full object-contain object-top"
             />
-            <div className="grid w-[82%] max-w-[560px] grid-cols-2 gap-2 sm:gap-3 lg:gap-4">
-              {questionSets[team][questionIndex].options.map((option, index) => (
-                <button
-                  key={option}
-                  type="button"
-                  onClick={() => selectAnswer('ABCD'[index])}
-                  className="min-h-10 rounded-md border border-[#e4e4e4] bg-white/95 px-2 text-xs text-[#6e747b] shadow-sm transition-transform hover:scale-[1.03] active:scale-[0.97] sm:min-h-12 sm:text-sm lg:min-h-14 lg:text-base"
+            {questionImageLoaded && (
+              <>
+                <div className="grid w-[82%] max-w-[560px] grid-cols-2 gap-2 sm:gap-3 lg:gap-4">
+                  {questionSets[team][questionIndex].options.map((option, index) => (
+                    <button
+                      key={option}
+                      type="button"
+                      onClick={() => selectAnswer('ABCD'[index])}
+                      className="min-h-10 rounded-md border border-[#e4e4e4] bg-white/95 px-2 text-xs text-[#6e747b] shadow-sm transition-transform hover:scale-[1.03] active:scale-[0.97] sm:min-h-12 sm:text-sm lg:min-h-14 lg:text-base"
+                    >
+                      {option}
+                    </button>
+                  ))}
+                </div>
+                <div
+                  className="flex w-[42%] max-w-[230px] items-center justify-center gap-1.5 sm:gap-2"
+                  aria-label={`Pregunta ${questionIndex + 1} de 5`}
                 >
-                  {option}
-                </button>
-              ))}
-            </div>
-            <div
-              className="flex w-[42%] max-w-[230px] items-center justify-center gap-1.5 sm:gap-2"
-              aria-label={`Pregunta ${questionIndex + 1} de 5`}
-            >
-              {[0, 1, 2, 3, 4].map((stepNumber) => (
-                <span
-                  key={stepNumber}
-                  className={`h-1.5 flex-1 rounded-full ${stepNumber === questionIndex ? 'bg-[#c7c7c7]' : 'bg-[#e7e7e7]'}`}
-                />
-              ))}
-            </div>
+                  {[0, 1, 2, 3, 4].map((stepNumber) => (
+                    <span
+                      key={stepNumber}
+                      className={`h-1.5 flex-1 rounded-full ${stepNumber === questionIndex ? 'bg-[#c7c7c7]' : 'bg-[#e7e7e7]'}`}
+                    />
+                  ))}
+                </div>
+              </>
+            )}
           </div>
         ) : team ? (
           <form

@@ -13,6 +13,7 @@ import botonNutricionFelina from '../assets/home/boton-nutricion-felina.svg'
 import logosDogourmet from '../assets/home/logosdogourmet.svg'
 import patitasBadge from '../assets/home/patitas.svg'
 import footerHome from '../assets/home/footer-home.svg'
+import InstallPwaButton from '../components/InstallPwaButton'
 
 function Home() {
   useEffect(() => {
@@ -109,11 +110,10 @@ function Home() {
               alt="Marcas: Oh mai gat!, Dogourmet, Don Kat, SuperCan, Champ's"
               className="block h-auto w-full object-contain"
             />
-          </div>
+          </div>  
 
           <Link
-            to="/testhome"
-            onClick={() => { navigate('/testhome') }}
+            to="/testseleccion"
             className="relative z-40 flex w-[min(34%,168px)] items-center justify-center border-0 bg-transparent p-0 max-[1024px]:w-[clamp(106px,30vw,170px)] max-[1024px]:top-10 min-[768px]:max-[1024px]:w-[50%] min-[768px]:max-[1024px]:top-10 min-[1025px]:w-[clamp(120px,12vw,180px)] min-[1025px]:top-0"
             aria-label="Hacer test de nutrición para tu mascota"
           >
@@ -134,6 +134,7 @@ function Home() {
             />
           </div>
         </footer>
+        <InstallPwaButton />
       </div>
     </main>
   )
