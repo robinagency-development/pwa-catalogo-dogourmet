@@ -111,9 +111,9 @@ function Home() {
             />
           </div>
 
-          <button
-            type="button"
-            onClick={() => {}}
+          <Link
+            to="/testhome"
+            onClick={() => { navigate('/testhome') }}
             className="relative z-40 flex w-[min(34%,168px)] items-center justify-center border-0 bg-transparent p-0 max-[1024px]:w-[clamp(106px,30vw,170px)] max-[1024px]:top-10 min-[768px]:max-[1024px]:w-[50%] min-[768px]:max-[1024px]:top-10 min-[1025px]:w-[clamp(120px,12vw,180px)] min-[1025px]:top-0"
             aria-label="Hacer test de nutrición para tu mascota"
           >
@@ -122,7 +122,7 @@ function Home() {
               alt="¡IR AL TEST!"
               className="block h-auto w-full"
             />
-          </button>
+          </Link>
         </div>
 
         <footer className="home-footer_">
