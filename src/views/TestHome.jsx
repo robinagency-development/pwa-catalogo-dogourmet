@@ -32,11 +32,13 @@ function TestHome() {
             className="absolute left-1/2 top-[2%] z-30 w-[36%] max-w-[220px] -translate-x-1/2 object-contain sm:top-[3%] sm:w-[28%] lg:w-[20%]"
           />
 
-          <img
-            src={test}
-            alt="Haz el test"
-            className="absolute right-[5%] top-[8%] z-30 w-[22%] max-w-[150px] object-contain sm:right-[8%] sm:top-[9%] sm:w-[18%] lg:right-[12%] lg:top-[10%] lg:w-[13%]"
-          />
+          <Link
+            to="/testseleccion"
+            aria-label="Haz el test"
+            className="absolute right-[5%] top-[8%] z-30 block w-[22%] max-w-[150px] transition-transform hover:scale-105 active:scale-95 sm:right-[8%] sm:top-[9%] sm:w-[18%] lg:right-[12%] lg:top-[10%] lg:w-[13%]"
+          >
+            <img src={test} alt="Haz el test" className="block h-auto w-full object-contain" />
+          </Link>
 
           <img
             src={perro}

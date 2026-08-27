@@ -7,6 +7,7 @@ import Donkat from './views/Donkat'
 import Ohmygat from './views/Ohmygat'
 import Supercan from './views/Supercan'
 import TestHome from './views/TestHome'
+import TestSeleccion from './views/TestSeleccion'
 import InstallPwaButton from './components/InstallPwaButton'
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path="/ohmygat" element={<Ohmygat />} />
         <Route path="/Supercan" element={<Supercan />} />
         <Route path="/testhome" element={<TestHome />} />
+        <Route path="/testseleccion" element={<TestSeleccion />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
       <InstallPwaButton />
