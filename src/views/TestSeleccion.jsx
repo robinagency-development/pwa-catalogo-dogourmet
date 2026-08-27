@@ -35,17 +35,17 @@ import respuestaPerroD from '../assets/answersDogs/personalidad-d-perros.webp'
 const questionSets = {
   guau: [
     { image: preguntaPerro1, options: ['Conexión', 'Diversión', 'Lealtad', 'Aventura'] },
-    { image: preguntaPerro2, options: ['Liderazgo', 'Calma', 'Creatividad', 'Energía'] },
-    { image: preguntaPerro3, options: ['Explorar', 'Cuidar', 'Compartir', 'Descansar'] },
-    { image: preguntaPerro4, options: ['Valiente', 'Amable', 'Curioso', 'Espontáneo'] },
-    { image: preguntaPerro5, options: ['Siempre', 'A veces', 'Casi nunca', 'Depende'] },
+    { image: preguntaPerro2, options: ['Toy Story', 'Son como niños', 'Avengers', 'Viaje al centro de la tierra'] },
+    { image: preguntaPerro3, options: ['Busco a alguien para no estar solo', 'Cambio de escondite cada 5 min.', 'CReviso si mi familia está bien', 'Investigo de dónde vino'] },
+    { image: preguntaPerro4, options: ['Algo para compartir', 'Comida rápida', 'Una ensalada y full proteína', 'Algo que no haya probado antes'] },
+    { image: preguntaPerro5, options: ['Saludo a todo el mundo', 'Busco como hacer ruido', 'No me separo de mi grupo', 'Exploro el lugar'] },
   ],
   miau: [
-    { image: preguntaGato1, options: ['Conexión', 'Diversión', 'Lealtad', 'Aventura'] },
-    { image: preguntaGato2, options: ['Liderazgo', 'Calma', 'Creatividad', 'Energía'] },
-    { image: preguntaGato3, options: ['Explorar', 'Cuidar', 'Compartir', 'Descansar'] },
-    { image: preguntaGato4, options: ['Valiente', 'Amable', 'Curioso', 'Espontáneo'] },
-    { image: preguntaGato5, options: ['Siempre', 'A veces', 'Casi nunca', 'Depende'] },
+    { image: preguntaGato1, options: ['¿En dónde? ¿Quiénes van?', '¡Claro! conozco el lugar perfecto', 'Ok, pero a las 12 me regreso', 'Depende...'] },
+    { image: preguntaGato2, options: ['El que siempre tiene un cuento', 'El líder sin discusión', 'El bebé del grupo', 'El que no se conforma con nada'] },
+    { image: preguntaGato3, options: ['Ver TikToks sobre alguna polémica', 'Cualquiera mientras pueda elegir', 'Hornear galletas', 'Ver películas en casa'] },
+    { image: preguntaGato4, options: ['Parchita', 'Chocolate', 'Fresa', 'Mantecado'] },
+    { image: preguntaGato5, options: ['Donde me entero de todo', 'Donde me siento cómodo', 'Parque con áreas verdes', 'Mi cama'] },
   ],
 }
 
@@ -90,6 +90,13 @@ function TestSeleccion() {
     setStep('questions')
   }
 
+  const restartTest = () => {
+    setAnswers([])
+    setTeam('')
+    setStep('selection')
+    setQuestionIndex(0)
+  }
+
   const selectAnswer = (letter) => {
     const nextAnswers = [...answers, letter]
     if (questionIndex < 4) {
@@ -103,7 +110,7 @@ function TestSeleccion() {
       [current]: result[current] + 1,
     }), { A: 0, B: 0, C: 0, D: 0 })
     const highest = Math.max(...Object.values(counts))
-    const winners = Object.keys(counts).filter((letter) => counts[letter] === highest)
+    const winners = Object.keys(counts).filter((current) => counts[current] === highest)
     const winner = winners.includes(letter) ? letter : winners[0]
     setAnswers(nextAnswers)
     setStep('result')
@@ -121,11 +128,18 @@ function TestSeleccion() {
 
       <div className="relative z-10 mx-0 flex h-full w-full flex-col items-center">
         {step === 'result' ? (
-          <img
-            src={answerSets[team][questionIndex]}
-            alt={`Resultado de personalidad ${'ABCD'[questionIndex]}`}
-            className="absolute inset-0 z-20 h-full w-full object-cover object-center"
-          />
+          <button
+            type="button"
+            onClick={restartTest}
+            aria-label="Volver al inicio del test"
+            className="absolute inset-0 z-20 h-full w-full cursor-pointer"
+          >
+            <img
+              src={answerSets[team][questionIndex]}
+              alt={`Resultado de personalidad ${'ABCD'[questionIndex]}`}
+              className="h-full w-full object-cover object-center"
+            />
+          </button>
         ) : step === 'questions' ? (
           <div className="relative z-30 flex h-full w-full flex-col items-center justify-between pb-8">
             <img
