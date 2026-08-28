@@ -1,6 +1,13 @@
 import { useEffect } from 'react'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import {
+  saveTestResult,
+  exportTestResultsCsv,
+  getSavedResultsCount,
+  getAllTestResults,
+  clearAllTestResults,
+} from '../lib/testResultsDb'
 import fondo from '../assets/testseleccion/fondo.png'
 import gatoYPerro from '../assets/testseleccion/gato-y-perro.png'
 import queHuellitasMarcan from '../assets/testseleccion/que-huellitas-marcan.png'
@@ -86,6 +93,17 @@ function TestSeleccion() {
   const [questionIndex, setQuestionIndex] = useState(0)
   const [questionImageLoaded, setQuestionImageLoaded] = useState(false)
   const [answers, setAnswers] = useState([])
+  const [savedResultsCount, setSavedResultsCount] = useState(0)
+  const [history, setHistory] = useState([])
+  const [showHistory, setShowHistory] = useState(false)
+  const [latestResultRecord, setLatestResultRecord] = useState(null)
+  const [saveToLocal, setSaveToLocal] = useState(() => {
+    if (typeof window === 'undefined') {
+      return true
+    }
+
+    return localStorage.getItem('dogourmet_test_storage_preference') !== 'clear'
+  })
   const [formData, setFormData] = useState({
     nombre: '',
     correo: '',
@@ -97,7 +115,20 @@ function TestSeleccion() {
 
   useEffect(() => {
     window.scrollTo(0, 0)
+    const loadCount = async () => {
+      const total = await getSavedResultsCount()
+      setSavedResultsCount(total)
+      const rows = await getAllTestResults()
+      setHistory(rows)
+    }
+    loadCount()
   }, [])
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('dogourmet_test_storage_preference', saveToLocal ? 'keep' : 'clear')
+    }
+  }, [saveToLocal])
 
   if (!assetsReady) {
     return <ViewAssetLoader label="Cargando test" />
@@ -153,13 +184,22 @@ function TestSeleccion() {
       return
     }
 
-    setAnswers((current) => current.slice(0, -1))
+    setAnswers([])
+    setFormData({
+      nombre: '',
+      correo: '',
+      hospital: '',
+      ciudad: '',
+      telefono: '',
+      especialidad: '',
+    })
     setQuestionImageLoaded(false)
-    setQuestionIndex(4)
-    setStep('questions')
+    setQuestionIndex(0)
+    setStep('selection')
+    setTeam('')
   }
 
-  const selectAnswer = (letter) => {
+  const selectAnswer = async (letter) => {
     const nextAnswers = [...answers, letter]
     if (questionIndex < 4) {
       setAnswers(nextAnswers)
@@ -175,9 +215,82 @@ function TestSeleccion() {
     const highest = Math.max(...Object.values(counts))
     const winners = Object.keys(counts).filter((current) => counts[current] === highest)
     const winner = winners.includes(letter) ? letter : winners[0]
+    const finalLetter = winner
+    const finalLabel = 'ABCD'.includes(finalLetter) ? 'ABCD'[ 'ABCD'.indexOf(finalLetter) ] : finalLetter
+    const resultIndex = 'ABCD'.indexOf(finalLetter)
+
+    const record = {
+      created_at: new Date().toISOString(),
+      nombre: formData.nombre,
+      correo: formData.correo,
+      hospital: formData.hospital,
+      ciudad: formData.ciudad,
+      telefono: formData.telefono,
+      especialidad: formData.especialidad,
+      team,
+      answers: nextAnswers,
+      answer_letters: nextAnswers.join(''),
+      result_letter: finalLetter,
+      result_label: finalLabel,
+      result_image: answerSets[team][resultIndex],
+      metadata: {
+        teamLabel: team === 'guau' ? 'Guau' : 'Miau',
+        totalQuestions: 5,
+        storagePreference: saveToLocal ? 'keep' : 'clear',
+      },
+    }
+
+    setLatestResultRecord(record)
     setAnswers(nextAnswers)
     setStep('result')
-    setQuestionIndex('ABCD'.indexOf(winner))
+    setQuestionIndex(resultIndex)
+
+    if (saveToLocal) {
+      try {
+        await saveTestResult(record)
+        const count = await getSavedResultsCount()
+        setSavedResultsCount(count)
+      } catch (error) {
+        console.error('No se pudo guardar el resultado localmente:', error)
+        setSavedResultsCount(0)
+      }
+    } else {
+      setSavedResultsCount(0)
+    }
+  }
+
+  const handleExportCsv = async () => {
+    const rows = await getAllTestResults()
+    const dataToExport = rows.length ? rows : latestResultRecord ? [latestResultRecord] : []
+
+    if (!dataToExport.length) {
+      return
+    }
+
+    const exported = await exportTestResultsCsv(dataToExport)
+    if (exported) {
+      const count = await getSavedResultsCount()
+      setSavedResultsCount(count)
+    }
+  }
+
+  const refreshHistory = async () => {
+    const rows = await getAllTestResults()
+    setHistory(rows)
+    const total = await getSavedResultsCount()
+    setSavedResultsCount(total)
+  }
+
+  const handleClearData = async () => {
+    await clearAllTestResults()
+    setHistory([])
+    setSavedResultsCount(0)
+    setSaveToLocal(false)
+  }
+
+  const handleViewHistory = async () => {
+    await refreshHistory()
+    setShowHistory((current) => !current)
   }
 
   return (
@@ -210,18 +323,93 @@ function TestSeleccion() {
       </button>
 
         {step === 'result' ? (
-          <button
-            type="button"
-            onClick={restartTest}
-            aria-label="Volver al inicio del test"
-            className="absolute inset-0 z-20 h-full w-full cursor-pointer"
-          >
-            <img
-              src={answerSets[team][questionIndex]}
-              alt={`Resultado de personalidad ${'ABCD'[questionIndex]}`}
-              className="h-full w-full object-cover object-center"
-            />
-          </button>
+          <div className="absolute inset-0 z-20 flex h-full w-full flex-col items-center justify-center bg-[#536f76]/70">
+            <button
+              type="button"
+              onClick={restartTest}
+              aria-label="Volver al inicio del test"
+              className="relative h-full w-full cursor-pointer"
+            >
+              <img
+                src={answerSets[team][questionIndex]}
+                alt={`Resultado de personalidad ${'ABCD'[questionIndex]}`}
+                className="h-full w-full object-cover object-center"
+              />
+            </button>
+
+            <div className="w-[75%] absolute bottom-8 left-1/2 z-30 flex -translate-x-1/2 flex-col items-center gap-3 rounded-xl bg-[#0a2235]/80 p-4 text-white shadow-lg backdrop-blur-sm">
+              <div className="text-center text-sm font-semibold">
+                Registros guardados: {savedResultsCount}
+              </div>
+
+              <div className="flex gap-2">
+                <button
+                  type="button"
+                  onClick={handleExportCsv}
+                  className="rounded-full bg-[#f7d856] px-4 py-2 text-xs font-bold text-[#1a1a1a]"
+                >
+                  Descargar CSV
+                </button>
+                <button
+                  type="button"
+                  onClick={handleViewHistory}
+                  className="rounded-full border border-white/60 bg-transparent px-4 py-2 text-xs font-bold text-white"
+                >
+                  {showHistory ? 'Ocultar historial' : 'Ver historial'}
+                </button>
+                <button
+                  type="button"
+                  onClick={handleClearData}
+                  className="rounded-full border border-white/60 bg-transparent px-4 py-2 text-xs font-bold text-white"
+                >
+                  Vaciar datos
+                </button>
+              </div>
+
+              <label className="flex items-center gap-2 text-xs">
+                <input
+                  type="checkbox"
+                  checked={saveToLocal}
+                  onChange={(event) => setSaveToLocal(event.target.checked)}
+                />
+                Mantener registro local
+              </label>
+            </div>
+
+            {showHistory && (
+              <div className="absolute bottom-44 left-1/2 z-40 w-[88%] max-w-[720px] -translate-x-1/2 overflow-hidden rounded-2xl border border-white/20 bg-[#0a2235]/90 p-3 text-left text-white shadow-2xl backdrop-blur-md">
+                <div className="mb-2 flex items-center justify-between">
+                  <h3 className="text-sm font-bold uppercase">Historial local</h3>
+                  <button
+                    type="button"
+                    onClick={() => setShowHistory(false)}
+                    className="text-xs text-white/80"
+                  >
+                    Cerrar
+                  </button>
+                </div>
+
+                {history.length === 0 ? (
+                  <p className="text-xs text-white/70">No hay registros guardados.</p>
+                ) : (
+                  <div className="max-h-[220px] overflow-auto pr-1">
+                    {history.map((record) => (
+                      <div key={record.id} className="mb-2 rounded-lg border border-white/10 bg-white/5 p-2 text-[11px]">
+                        <div className="flex justify-between gap-2">
+                          <strong>{record.nombre || 'Sin nombre'}</strong>
+                          <span>{new Date(record.created_at).toLocaleString()}</span>
+                        </div>
+                        <div>{record.correo}</div>
+                        <div>{record.hospital} • {record.ciudad}</div>
+                        <div>Equipo: {record.team} • Resultado: {record.result_letter}</div>
+                        <div>Opciones: {record.answer_letters || record.answers}</div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
         ) : step === 'questions' ? (
           <div className="relative z-30 flex h-full w-full flex-col items-center justify-between pb-8">
             <img
