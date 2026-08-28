@@ -24,11 +24,45 @@ import ImageCarousel from '../components/ImageCarousel'
 import fondoBlancoBottom from '../assets/champs/fondo-blanco-bottom.svg'
 import textoNuestros from '../assets/champs/texto-nuestros.svg'
 import textoSabores from '../assets/champs/texto-sabores.svg'
+import ViewAssetLoader, { useAssetLoader } from '../components/ViewAssetLoader'
+
+const supercanAssets = [
+  logoSupercan,
+  fondoTop,
+  textoLaTranquilidad,
+  textoAlimentacionBalanceada,
+  textoNuestraFormula,
+  perroTranquilidad,
+  adultosCarne,
+  adultosPollo,
+  carneCereales,
+  fondoAzulBottom,
+  textoHuellitas,
+  textoConoceSobre,
+  botonChamps,
+  botonDogourmet,
+  botonVolverHome,
+  botonNuestrasTasasNutricionales,
+  carrousel1,
+  carrousel2,
+  botonVisitarNutricionFelina,
+  gatoBottom,
+  fondoBlancoBottom,
+  textoNuestros,
+  textoSabores,
+]
 
 function Supercan() {
+  const assetsReady = useAssetLoader(supercanAssets)
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  if (!assetsReady) {
+    return <ViewAssetLoader label="Cargando Supercan" />
+  }
+
   return (
     <main className="home-champs">
       <div className="home-container !min-h-0 !justify-normal">

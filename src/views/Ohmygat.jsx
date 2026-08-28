@@ -35,11 +35,68 @@ import fondoAzulBottom from '../assets/ohmygat/fondo-azul-bottom.svg'
 import botonVisitarNutricionCanina from '../assets/ohmygat/boton-visitar-nutricion.svg'
 import perroBottom from '../assets/ohmygat/perro-bottom.svg'
 import ImageCarousel from '../components/ImageCarousel'
+import ViewAssetLoader, { useAssetLoader } from '../components/ViewAssetLoader'
+
+const ohmygatAssets = [
+  fondoBlancoTop,
+  ohmygat,
+  textoIrresistiblesabor,
+  textoFormulaSinColorantes,
+  gatoIzquierda,
+  textoVerMas,
+  flechaVerMas,
+  fondoBlancoMedium,
+  fondoBlancoTabla,
+  textoAtributos,
+  textoFuncionales,
+  gatoAtributos,
+  carrousel1,
+  carrousel2,
+  carrousel3,
+  carrousel4,
+  carrouselpre1,
+  carrouselpre2,
+  textoCaseros,
+  textoYDelicados,
+  textoAlimentacionPerfecta,
+  textoNutricionales,
+  tablaNutricional,
+  botonDonkat,
+  botonVolverHome,
+  textoHuellitasPorExplorar,
+  textoConoceMas,
+  fondoAzulClaroBottom,
+  fondoAzulMiddle,
+  fondoAzulClaroMiddle,
+  textoDisponible,
+  fondoAzulBottom,
+  botonVisitarNutricionCanina,
+  perroBottom,
+]
 
 function Ohmygat() {
+  const assetsReady = useAssetLoader(ohmygatAssets)
+
+  const handleGoToAtributos = (event) => {
+    const atributosSection = document.getElementById('atributos')
+
+    if (!atributosSection) {
+      return
+    }
+
+    event.preventDefault()
+    atributosSection.scrollIntoView({ behavior: 'smooth', block: 'start' })
+    window.history.replaceState(null, '', '/ohmygat#atributos')
+  }
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  if (!assetsReady) {
+    return <ViewAssetLoader label="Cargando Oh my gat" />
+  }
+
   return (
     <main className="w-full min-h-screen flex flex-col items-center select-none">
       <section className="pt-50 relative w-full flex flex-col items-center text-center z-0 overflow-hidden bg-[#0099D0]">
@@ -77,23 +134,25 @@ function Ohmygat() {
               alt="Gato Ohmygat"
               className="absolute left-0 bottom-0 w-[60%] z-20 pointer-events-none object-contain drop-shadow-lg"
             />
-            <div className="absolute right-[8%] sm:right-[8%] md:right-12 lg:right-16 top-[10%] w-[37%] flex flex-col items-center gap-1 sm:gap-2 z-20">
-              <img
-                src={textoVerMas}
-                alt="VER MÁS"
-                className="w-full h-auto cursor-pointer transition-transform hover:scale-105"
-              />
-              <img
-                src={flechaVerMas}
-                alt=""
-                aria-hidden="true"
-                className="-mt-6 w-[82%] h-auto cursor-pointer transition-transform hover:scale-105"
-              />
-            </div>
+            <Link to="/ohmygat#atributos" onClick={handleGoToAtributos}>
+              <div className="absolute right-[8%] sm:right-[8%] md:right-12 lg:right-16 top-[10%] w-[37%] flex flex-col items-center gap-1 sm:gap-2 z-20">
+                <img
+                  src={textoVerMas}
+                  alt="VER MÁS"
+                  className="w-full h-auto cursor-pointer transition-transform hover:scale-105"
+                />
+                <img
+                  src={flechaVerMas}
+                  alt=""
+                  aria-hidden="true"
+                  className="-mt-6 w-[82%] h-auto cursor-pointer transition-transform hover:scale-105"
+                />
+              </div>
+            </Link>
           </div>
         </div>
       </section>
-      <section className="relative z-[70] isolate w-full flex flex-col items-center text-center -mt-50 pt-20 overflow-visible bg-[#FFFFFF]">
+      <section className="relative z-[80] isolate w-full flex flex-col items-center text-center -mt-50 pt-20 overflow-visible bg-[#FFFFFF]">
         {fondoBlancoMedium && (
           <img
             src={fondoBlancoMedium}
@@ -115,7 +174,7 @@ function Ohmygat() {
               className="w-[96%] h-auto mb-10"
             />
           </div>
-          <div className="relative z-[80] w-full pl-12 flex justify-center items-center mb-4 sm:mb-8">
+          <div id="atributos" className="relative z-[90] w-full pl-12 flex justify-center items-center mb-4 sm:mb-8">
             <img
               src={gatoAtributos}
               alt="Atributos funcionales"

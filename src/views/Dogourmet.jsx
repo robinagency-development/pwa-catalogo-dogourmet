@@ -40,8 +40,53 @@ import textoSabores from '../assets/dogourmet/texto-sabores.svg'
 import botonDesliza from '../assets/dogourmet/boton-desliza.svg'
 import fondoRojoArriba from '../assets/dogourmet/fondo-rojo-arriba.svg'
 import ImageCarousel from '../components/ImageCarousel'
+import ViewAssetLoader, { useAssetLoader } from '../components/ViewAssetLoader'
+
+const dogourmetAssets = [
+  dogourmet,
+  textoExquisitas,
+  textoParaconseguiratuperro,
+  textoQueAportanProteinas,
+  fondoRojoTop,
+  perroIzquierda,
+  textoVerMas,
+  flechaVerMas,
+  fondoCrema,
+  textoAtributos,
+  textoFuncionales,
+  perroAtributos,
+  textoHuellitasPorExplorar,
+  botonVisitarNutricionFelina,
+  fondoBlancoBottom,
+  gatoBottom,
+  botonChamps,
+  botonSupercan,
+  botonVolverHome,
+  botonNuestrasTasasNutricionales,
+  carrousel1,
+  carrousel2,
+  carrousel3,
+  fondoAmarilloTop,
+  fondoAmarilloBottom,
+  textoActuamosComo,
+  textoConoceSobre,
+  textoEnergiaProtegida,
+  perroEnergiaProtegida,
+  asadoNegro,
+  carneCereales,
+  parrillaMixta,
+  polloAlaBrasa,
+  textoProteinas,
+  textoFundamental,
+  textoNuestros,
+  textoSabores,
+  botonDesliza,
+  fondoRojoArriba,
+]
 
 function Dogourmet() {
+  const assetsReady = useAssetLoader(dogourmetAssets)
+
   const handleGoToAtributos = (event) => {
     const atributosSection = document.getElementById('atributos')
 
@@ -57,6 +102,11 @@ function Dogourmet() {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  if (!assetsReady) {
+    return <ViewAssetLoader label="Cargando Dogourmet" />
+  }
+
   return (
     <main className="w-full min-h-screen bg-[#FFF8E7] flex flex-col items-center select-none">
       <section className="relative w-full pt-10 sm:pt-16 md:pt-24 pb-20 sm:pb-32 md:pb-40 flex flex-col items-center text-center z-10">

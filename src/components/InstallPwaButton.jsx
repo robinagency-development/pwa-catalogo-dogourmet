@@ -20,6 +20,12 @@ function InstallPwaButton() {
       setShowHint(false)
     }
 
+      const handleVisibilityChange = () => {
+        if (document.visibilityState === 'visible') {
+          setShowHint(false)
+        }
+      }
+
     const handleAppInstalled = () => {
       setInstallPrompt(null)
       setIsInstalled(true)
@@ -28,10 +34,12 @@ function InstallPwaButton() {
 
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt)
     window.addEventListener('appinstalled', handleAppInstalled)
+      document.addEventListener('visibilitychange', handleVisibilityChange)
 
     return () => {
       window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt)
       window.removeEventListener('appinstalled', handleAppInstalled)
+        document.removeEventListener('visibilitychange', handleVisibilityChange)
     }
   }, [])
 
@@ -41,9 +49,12 @@ function InstallPwaButton() {
       return
     }
 
-    installPrompt.prompt()
-    await installPrompt.userChoice
-    setInstallPrompt(null)
+    try {
+      await installPrompt.prompt()
+      await installPrompt.userChoice
+    } finally {
+      setInstallPrompt(null)
+    }
   }
 
   if (isInstalled) {

@@ -33,6 +33,7 @@ import respuestaPerroB from '../assets/answersDogs/personalidad-b-perros.webp'
 import respuestaPerroC from '../assets/answersDogs/personalidad-c-perros.webp'
 import respuestaPerroD from '../assets/answersDogs/personalidad-d-perros.webp'
 import botonVolverHome from '../assets/dogourmet/boton-volver-home.svg'
+import ViewAssetLoader, { useAssetLoader } from '../components/ViewAssetLoader'
 
 const questionSets = {
   guau: [
@@ -56,8 +57,30 @@ const answerSets = {
   miau: [respuestaGatoA, respuestaGatoB, respuestaGatoC, respuestaGatoD],
 }
 
+const testSeleccionAssets = [
+  fondo,
+  gatoYPerro,
+  queHuellitasMarcan,
+  teamGuau,
+  teamMiau,
+  tituloRegistro,
+  iconoNombre,
+  iconoCorreo,
+  iconoHospital,
+  iconoGps,
+  iconoNumero,
+  iconoEspecialidad,
+  comenzarTest,
+  botonVolverHome,
+  ...questionSets.guau.map(({ image }) => image),
+  ...questionSets.miau.map(({ image }) => image),
+  ...answerSets.guau,
+  ...answerSets.miau,
+]
+
 function TestSeleccion() {
   const navigate = useNavigate()
+  const assetsReady = useAssetLoader(testSeleccionAssets)
   const [team, setTeam] = useState('')
   const [step, setStep] = useState('selection')
   const [questionIndex, setQuestionIndex] = useState(0)
@@ -75,6 +98,10 @@ function TestSeleccion() {
   useEffect(() => {
     window.scrollTo(0, 0)
   }, [])
+
+  if (!assetsReady) {
+    return <ViewAssetLoader label="Cargando test" />
+  }
 
   const fields = [
     { name: 'nombre', label: 'Nombre y Apellido', icon: iconoNombre, type: 'text' },

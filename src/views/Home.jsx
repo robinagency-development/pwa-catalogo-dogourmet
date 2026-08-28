@@ -14,11 +14,35 @@ import logosDogourmet from '../assets/home/logosdogourmet.svg'
 import patitasBadge from '../assets/home/patitas.svg'
 import footerHome from '../assets/home/footer-home.svg'
 import InstallPwaButton from '../components/InstallPwaButton'
+import ViewAssetLoader, { useAssetLoader } from '../components/ViewAssetLoader'
+
+const homeAssets = [
+  logoEmpresasPolar,
+  textoPresentes,
+  textoEnLaAlimentacion,
+  textoExploraPortafolio,
+  elipseHeader,
+  fondoPatitasGato,
+  fondoRojo,
+  textoPorDondeEmpezar,
+  botonNutricionCanina,
+  botonNutricionFelina,
+  logosDogourmet,
+  patitasBadge,
+  footerHome,
+]
 
 function Home() {
+  const assetsReady = useAssetLoader(homeAssets)
+
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
+    window.scrollTo(0, 0)
+  }, [])
+
+  if (!assetsReady) {
+    return <ViewAssetLoader />
+  }
+
   return (
     <main className="home-canvas bgblue">
       <div className="home-container bgblue">

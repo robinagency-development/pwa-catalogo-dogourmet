@@ -22,11 +22,43 @@ import fondoFooter from '../assets/donkat/fondo-footer.svg'
 import botonVisitarNutricionCanina from '../assets/ohmygat/boton-visitar-nutricion.svg'
 import perroBottom from '../assets/ohmygat/perro-bottom.svg'
 import ImageCarousel from '../components/ImageCarousel'
+import ViewAssetLoader, { useAssetLoader } from '../components/ViewAssetLoader'
+
+const donkatAssets = [
+  donkat,
+  textoParaLosMasKool,
+  textoFormulaDisenada,
+  gatoFormula,
+  textoNuestrasPresentaciones,
+  fondoAmarilloMiddle,
+  carrousel1,
+  carrousel2,
+  carrousel3,
+  carrousel4,
+  carrousel5,
+  textoNutricionales,
+  tablaNutricional,
+  tablaNutricional2,
+  textoConoceSobre,
+  botonOhmygat,
+  botonVolverHome,
+  fondoAmarillo,
+  fondoFooter,
+  botonVisitarNutricionCanina,
+  perroBottom,
+]
 
 function Donkat() {
+  const assetsReady = useAssetLoader(donkatAssets)
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  if (!assetsReady) {
+    return <ViewAssetLoader label="Cargando Donkat" />
+  }
+
   return (
     <main className="w-full min-h-screen flex flex-col items-center select-none bg-[#BB0694]">
       <section className="pt-0 relative w-full flex flex-col items-center text-center z-0 overflow-hidden bg-[#BB0694]">

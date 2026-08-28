@@ -76,6 +76,54 @@ a {
   overflow: hidden;
 }
 
+.home-loader {
+  min-height: 100dvh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+  padding: 24px;
+  color: white;
+  text-align: center;
+  background: radial-gradient(circle at 50% 28%, rgba(243, 218, 1, 0.3), transparent 26%), #008dc1;
+}
+
+.home-loader-brand {
+  padding: 10px 18px;
+  border: 2px solid rgba(255, 255, 255, 0.88);
+  border-radius: 999px;
+  color: #005382;
+  background: white;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.18);
+  font-size: clamp(18px, 5vw, 28px);
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+.home-loader-ring {
+  width: 56px;
+  height: 56px;
+  border: 6px solid rgba(255, 255, 255, 0.36);
+  border-top-color: #f3da01;
+  border-radius: 50%;
+  animation: home-loader-spin 850ms linear infinite;
+}
+
+.home-loader p {
+  margin: 0;
+  color: white;
+  font-size: 15px;
+  font-weight: 900;
+}
+
+@keyframes home-loader-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
 .home-hero {
   position: relative;
   z-index: 10;

@@ -22,11 +22,44 @@ import carrousel1 from '../assets/champs/carne-taco.svg'
 import fondoAzulNuestrosSabores from '../assets/champs/fondo-nuestros-sabores.svg'
 import fondoAzulBottom from '../assets/champs/fondo-azul-bottom.svg'
 import tablaNutricional from '../assets/champs/tabla-nutricional.svg'
+import ViewAssetLoader, { useAssetLoader } from '../components/ViewAssetLoader'
+
+const champsAssets = [
+  logoChamps,
+  fondoTop,
+  textoNutricionCompleta,
+  textoNuestraFormula,
+  textoHazTap,
+  textoConoceSobre,
+  botonSuperCan,
+  botonDogourmet,
+  botonVolverHome,
+  perroNutricionCompleta,
+  fondoAmarilloTop,
+  fondoBlancoBottom,
+  botonVisitarNutricionFelina,
+  gatoBottom,
+  textoNuestros,
+  textoSabores,
+  textoNuestrasTablas,
+  textoNutricionales,
+  carrousel1,
+  fondoAzulNuestrosSabores,
+  fondoAzulBottom,
+  tablaNutricional,
+]
 
 function Champs() {
+  const assetsReady = useAssetLoader(champsAssets)
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  if (!assetsReady) {
+    return <ViewAssetLoader label="Cargando Champs" />
+  }
+
   return (
     <main className="home-champs">
       <div className="home-container !min-h-0 !justify-normal !overflow-visible">
