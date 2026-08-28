@@ -192,13 +192,22 @@ function TestSeleccion() {
       <div className="relative z-10 mx-0 flex h-full w-full flex-col items-center">
         <button
           type="button"
+          className="pwa-install-button fixed bottom-4 right-4 z-[110] grid h-30 w-30 place-items-center p-1 shadow-lg transition-transform hover:scale-105 active:scale-95 sm:bottom-6 sm:right-6"
           onClick={goBack}
           aria-label={step === 'selection' && !team ? 'Volver al Home' : 'Volver al paso anterior'}
           title={step === 'selection' && !team ? 'Volver al Home' : 'Volver al paso anterior'}
-          className="fixed bottom-4 right-4 z-[110] grid h-30 w-30 place-items-center p-1 shadow-lg transition-transform hover:scale-105 active:scale-95 sm:bottom-6 sm:right-6"
         >
-          <img src={botonVolverHome} alt="" aria-hidden="true" className="h-full w-full object-contain" />
-        </button>
+        <svg
+          aria-hidden="true"
+          className="pwa-install-icon"
+          viewBox="0 0 24 24"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path d="M15 18l-6-6 6-6" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M9 12h10" stroke="currentColor" strokeWidth="3" strokeLinecap="round" />
+        </svg>
+      </button>
 
         {step === 'result' ? (
           <button

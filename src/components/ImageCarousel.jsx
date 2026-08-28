@@ -1,7 +1,9 @@
-import { useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 function ImageCarousel({ items, className = '' }) {
   const [index, setIndex] = useState(0)
+  const [offsetX, setOffsetX] = useState(0)
+  const trackRef = useRef(null)
   const touchStartX = useRef(null)
 
   const goTo = (i) => {
@@ -47,10 +49,27 @@ function ImageCarousel({ items, className = '' }) {
     }
   }
 
+  useEffect(() => {
+    const updateOffset = () => {
+      if (!trackRef.current) return
+
+      const containerWidth = trackRef.current.clientWidth
+      const slideWidth = containerWidth * 0.85
+      const gap = 16
+
+      setOffsetX(index * (slideWidth + gap))
+    }
+
+    updateOffset()
+    window.addEventListener('resize', updateOffset)
+
+    return () => window.removeEventListener('resize', updateOffset)
+  }, [index])
+
   return (
     <div className={`relative w-full flex flex-col items-center ${className}`}>
       <div
-        className="relative w-[80%] overflow-hidden outline-none cursor-grab active:cursor-grabbing"
+        className="ml-[5%] relative w-[95%] overflow-hidden outline-none cursor-grab active:cursor-grabbing"
         tabIndex={0}
         role="group"
         aria-label="Carrusel de imágenes"
@@ -61,13 +80,14 @@ function ImageCarousel({ items, className = '' }) {
         onKeyDown={handleKeyDown}
       >
         <div
-          className="flex transition-transform duration-500 ease-out"
-          style={{ transform: `translateX(-${index * 100}%)` }}
+          ref={trackRef}
+          className="flex items-center gap-4 transition-transform duration-500 ease-out"
+          style={{ transform: `translateX(-${offsetX}px)` }}
         >
           {items.map((item, i) => (
             <div
               key={i}
-              className="w-full shrink-0 flex justify-center items-center"
+              className="w-[85%] shrink-0 flex justify-center items-center"
             >
               <img
                 src={item.src}
