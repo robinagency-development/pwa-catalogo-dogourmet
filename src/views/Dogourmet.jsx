@@ -377,13 +377,13 @@ function Dogourmet() {
                 <div className="w-[75%] flex justify-center relative z-30">
                   <Link
                     to="/donkat"
-                    className="transition-transform hover:scale-105 active:scale-95 relative z-30"
+                    className="relative z-30 block w-full transition-transform hover:scale-105 active:scale-95"
                     aria-label="Ir a catálogo de Nutrición Felina"
                   >
                     <img
                       src={botonVisitarNutricionFelina}
                       alt="VISITAR NUTRICIÓN FELINA"
-                      className="mt-20 h-auto drop-shadow-md"
+                      className="mt-20 w-full h-auto drop-shadow-md"
                     />
                   </Link>
                 </div>
