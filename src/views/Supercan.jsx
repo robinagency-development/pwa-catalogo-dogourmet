@@ -166,7 +166,7 @@ function Supercan() {
         </div>
       </section>
       <section className="relative w-full flex flex-col items-center text-center bg-[#004587] z-20 overflow-visible">
-        <div className="w-full flex flex-col items-center relative">
+        <div className="supercan-explore-content w-full flex flex-col items-center relative">
           <div className="flex flex-col items-center gap-2 mb-2 mt-16 w-full">
             <img
               src={textoHuellitas}

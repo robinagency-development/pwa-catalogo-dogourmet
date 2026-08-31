@@ -1,5 +1,9 @@
 @import "tailwindcss";
 
+@theme {
+  --breakpoint-lg: 75.0625rem;
+}
+
 :root {
   font-family: "Trebuchet MS", "Segoe UI", system-ui, -apple-system, sans-serif;
   color: #0f3750;
@@ -200,7 +204,7 @@ a {
   filter: drop-shadow(0 3px 2px rgba(0, 0, 0, 0.18));
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
   body:has(.home-canvas) {
     overflow: hidden;
   }
@@ -263,7 +267,7 @@ a {
 
 }
 
-@media (min-width: 768px) and (max-width: 1024px) {
+@media (min-width: 768px) and (max-width: 1200px) {
   .home-hero {
     flex-basis: clamp(430px, 35.5dvh, 486px);
     height: clamp(430px, 35.5dvh, 486px);
@@ -300,7 +304,89 @@ a {
 
 }
 
-@media (max-width: 390px), (max-height: 700px) and (max-width: 1024px) {
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .dogourmet-hero-visual {
+    min-height: 920px;
+  }
+
+  .supercan-explore-content {
+    padding-top: 268px;
+  }
+
+  .donkat-nutrition-content {
+    padding-top: 105px;
+  }
+
+  .donkat-footer-section {
+    overflow: hidden;
+  }
+
+  .ohmygat-hero-visual {
+    min-height: 1000px;
+  }
+
+  .ohmygat-showcase-content {
+    min-height: 525px;
+  }
+
+  .champs-flavors-background {
+    transform: translateY(-116px);
+  }
+
+  .home-m10-hero {
+    flex-basis: 600px;
+    height: 600px;
+  }
+
+
+  .home-m10-hero .home-polar-logo {
+    width: 750px;
+    max-height: none;
+  }
+
+  .home-title-presentes {
+    width: 315px;
+  }
+
+  .home-title-alimentacion {
+    width: 585px;
+  }
+
+  .home-title-explora {
+    width: 525px;
+  }
+
+  .home-start-actions {
+    max-width: none;
+  }
+
+  .home-start-title {
+    width: 810px;
+  }
+
+  .home-nutrition-button {
+    width: 683px;
+    max-height: none;
+  }
+
+  .home-brand-row {
+    max-width: none;
+  }
+
+  .home-brand-logos {
+    width: 678px !important;
+    flex-shrink: 0;
+    transform: translate(0, -85px);
+  }
+
+  .home-test-link {
+    top: -50px !important;
+    width: 360px !important;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 390px), (max-height: 700px) and (max-width: 1200px) {
   .home-hero {
     flex-basis: clamp(205px, 36dvh, 280px);
     height: clamp(205px, 36dvh, 280px);
@@ -621,7 +707,7 @@ a {
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1200px) {
   .pwa-install-floating {
     right: max(12px, env(safe-area-inset-right));
     bottom: max(12px, env(safe-area-inset-bottom));

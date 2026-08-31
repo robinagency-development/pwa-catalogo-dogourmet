@@ -124,7 +124,7 @@ function Donkat() {
         </div>
       </section>
       <section className="relative w-full flex flex-col items-center text-center z-20 bg-[#782793]">
-        <div className="w-full flex flex-col items-center relative z-20 mt-10">
+        <div className="donkat-nutrition-content w-full flex flex-col items-center relative z-20 mt-10">
           <div className="flex flex-col items-center gap-2 w-[85%] mt-16 mb-10">
             <img
               src={textoNutricionales}
@@ -144,7 +144,7 @@ function Donkat() {
         </div>
       </section>
 
-      <section className="relative w-full flex flex-col items-center text-center z-20 overflow-visible pt-14 sm:pt-16 md:pt-20 bg-[#782793]">
+      <section className="donkat-footer-section relative w-full flex flex-col items-center text-center z-20 overflow-visible pt-14 sm:pt-16 md:pt-20 bg-[#782793]">
         <div className="w-full flex flex-col items-center relative min-h-[280px] sm:min-h-[320px] md:min-h-[380px]">
             {fondoAmarillo && (
               <img

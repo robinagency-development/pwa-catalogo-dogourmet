@@ -128,7 +128,7 @@ function Ohmygat() {
             />
           </div>
 
-          <div className="relative w-full mt-6 min-h-[420px] sm:min-h-[380px] md:min-h-[640px] lg:min-h-[700px] bg-[#FFFFFF] overflow-visible">
+          <div className="ohmygat-hero-visual relative w-full mt-6 min-h-[420px] sm:min-h-[380px] md:min-h-[640px] lg:min-h-[700px] bg-[#FFFFFF] overflow-visible">
             <img
               src={gatoIzquierda}
               alt="Gato Ohmygat"
@@ -215,7 +215,7 @@ function Ohmygat() {
               className="absolute top-0 left-0 z-0 w-full h-auto object-contain pointer-events-none"
             />
           )}
-          <div className="relative min-h-[350px] w-full mt-10">
+          <div className="ohmygat-showcase-content relative min-h-[350px] w-full mt-10">
             <img
               src={ohmygat}
               alt="Oh My Gat"

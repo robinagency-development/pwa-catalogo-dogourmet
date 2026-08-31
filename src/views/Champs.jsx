@@ -102,7 +102,7 @@ function Champs() {
             src={fondoAzulNuestrosSabores}
             alt=""
             aria-hidden="true"
-            className="absolute w-full h-auto object-cover pointer-events-none -z-20 -top-30 lg:-top-50"
+            className="champs-flavors-background absolute w-full h-auto object-cover pointer-events-none -z-20 -top-30 lg:-top-50"
           />
           <div className="relative w-full flex flex-col items-center overflow-hidden">
             <div className="w-full flex flex-col items-center gap-1 sm:gap-2 my-16 relative z-10">

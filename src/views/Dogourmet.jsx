@@ -144,7 +144,7 @@ function Dogourmet() {
             />
           </div>
 
-          <div className="relative w-full min-h-[420px] sm:min-h-[500px] md:min-h-[640px] lg:min-h-[920px]">
+          <div className="dogourmet-hero-visual relative w-full min-h-[420px] sm:min-h-[500px] md:min-h-[640px] lg:min-h-[920px]">
             <img
               src={perroIzquierda}
               alt="Perro Dogourmet"
