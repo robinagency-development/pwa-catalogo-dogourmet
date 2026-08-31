@@ -174,11 +174,11 @@ function Dogourmet() {
             src={fondoCrema}
             alt=""
             aria-hidden="true"
-            className="absolute -top-10 left-0 w-full h-full object-cover -z-20 pointer-events-none"
+            className="dogourmet-cream-background absolute -top-10 left-0 w-full h-full object-cover -z-20 pointer-events-none"
           />
         )}
         <div className="w-full flex flex-col items-center relative z-10">
-          <div className="flex flex-col items-center gap-1 sm:gap-2 mb-8 sm:mb-12 md:mb-16 w-[80%] mt-30">
+          <div className="dogourmet-attributes-heading flex flex-col items-center gap-1 sm:gap-2 mb-8 sm:mb-12 md:mb-16 w-[80%] mt-30">
             <img
               src={textoAtributos}
               alt="ATRIBUTOS"
@@ -263,7 +263,7 @@ function Dogourmet() {
           <img
             src={perroEnergiaProtegida}
             alt="Perro Energia Protegida"
-            className="absolute -top-[12%] left-0 w-[60%] h-auto object-contain -z-30 pointer-events-none"
+            className="dogourmet-energy-dog absolute -top-[12%] left-0 w-[60%] h-auto object-contain -z-30 pointer-events-none"
           />
         </>
         )}

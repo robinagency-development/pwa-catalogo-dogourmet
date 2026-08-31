@@ -309,6 +309,18 @@ a {
     min-height: 920px;
   }
 
+  .dogourmet-attributes-heading {
+    margin-top: 321px !important;
+  }
+
+  .dogourmet-cream-background {
+    transform: translateY(74px);
+  }
+
+  .dogourmet-energy-dog {
+    transform: translateY(80px);
+  }
+
   .supercan-explore-content {
     padding-top: 268px;
   }
