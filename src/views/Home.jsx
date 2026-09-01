@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { Link } from 'react-router-dom'
+import { Database } from 'lucide-react'
 import logoEmpresasPolar from '../assets/home/logo-empresas-polar.svg'
 import textoPresentes from '../assets/home/textp-presentes.svg'
 import textoEnLaAlimentacion from '../assets/home/texto-en-la-alimentacion-de-tu-mejor-amigo.svg'
@@ -46,6 +47,14 @@ function Home() {
   return (
     <main className="home-canvas bgblue">
       <div className="home-container bgblue">
+        <Link
+          to="/admin-registros"
+          className="home-admin-link"
+          aria-label="Abrir registros del test"
+          title="Registros del test"
+        >
+          <Database aria-hidden="true" size={22} strokeWidth={2.5} />
+        </Link>
         <img
           src={fondoPatitasGato}
           alt=""

@@ -80,6 +80,254 @@ a {
   overflow: hidden;
 }
 
+.home-admin-link {
+  position: absolute;
+  z-index: 60;
+  top: 18px;
+  right: 18px;
+  display: grid;
+  width: 46px;
+  height: 46px;
+  place-items: center;
+  border: 2px solid white;
+  border-radius: 50%;
+  color: #005382;
+  background: #f3da01;
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.22);
+  transition: transform 160ms ease, filter 160ms ease;
+}
+
+.home-admin-link:hover {
+  transform: scale(1.06);
+  filter: brightness(1.05);
+}
+
+.home-admin-link:active {
+  transform: scale(0.96);
+}
+
+.admin-records-page {
+  position: relative;
+  min-height: 100dvh;
+  overflow-x: hidden;
+  overflow-y: auto;
+  color: #0f3750;
+  background: #008dc1;
+}
+
+.admin-records-paws,
+.admin-records-wave {
+  position: absolute;
+  width: 100%;
+  pointer-events: none;
+}
+
+.admin-records-paws {
+  inset: 0;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.9;
+}
+
+.admin-records-wave {
+  bottom: 0;
+  left: 0;
+  height: auto;
+}
+
+.admin-records-header,
+.admin-records-content {
+  position: relative;
+  z-index: 1;
+  width: min(100% - 32px, 1040px);
+  margin-inline: auto;
+}
+
+.admin-records-header {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding-top: 24px;
+  color: white;
+}
+
+.admin-records-header h1 {
+  margin: 0;
+  font-size: clamp(24px, 4vw, 36px);
+  font-weight: 900;
+}
+
+.admin-back-link {
+  display: grid;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  place-items: center;
+  border: 2px solid white;
+  border-radius: 50%;
+  color: #005382;
+  background: #f3da01;
+  font-size: 26px;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.admin-records-content {
+  min-height: calc(100dvh - 90px);
+  display: grid;
+  place-items: center;
+  padding: 30px 0 54px;
+}
+
+.admin-login-form,
+.admin-records-panel {
+  width: min(100%, 920px);
+  border: 2px solid rgba(255, 255, 255, 0.75);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.94);
+  box-shadow: 0 16px 34px rgba(0, 42, 66, 0.25);
+}
+
+.admin-login-form {
+  width: min(100%, 420px);
+  display: grid;
+  gap: 16px;
+  padding: 28px;
+}
+
+.admin-login-form label {
+  display: grid;
+  gap: 6px;
+  color: #005382;
+  font-size: 14px;
+  font-weight: 900;
+}
+
+.admin-login-form input {
+  width: 100%;
+  padding: 11px 12px;
+  border: 2px solid #b5d6e5;
+  border-radius: 5px;
+  outline: none;
+  color: #0f3750;
+  background: white;
+}
+
+.admin-login-form input:focus {
+  border-color: #005382;
+}
+
+.admin-login-error {
+  margin: 0;
+  color: #a20818;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.admin-records-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 20px;
+}
+
+.admin-records-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
+.admin-primary-action,
+.admin-secondary-action,
+.admin-danger-action {
+  min-height: 38px;
+  padding: 8px 14px;
+  border: 0;
+  border-radius: 5px;
+  font-size: 13px;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.admin-primary-action {
+  color: #5b0909;
+  background: #f3da01;
+}
+
+.admin-secondary-action {
+  color: white;
+  background: #005382;
+}
+
+.admin-danger-action {
+  color: white;
+  background: #a20818;
+}
+
+.admin-primary-action:disabled,
+.admin-danger-action:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.admin-empty-state {
+  margin: 0;
+  padding: 50px 20px;
+  text-align: center;
+  color: #466574;
+}
+
+.admin-records-table-wrap {
+  overflow-x: auto;
+  border-top: 1px solid #c9e0ea;
+}
+
+.admin-records-table-wrap table {
+  width: 100%;
+  min-width: 760px;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.admin-records-table-wrap th,
+.admin-records-table-wrap td {
+  padding: 11px 14px;
+  border-bottom: 1px solid #d7e7ed;
+  text-align: left;
+  vertical-align: top;
+}
+
+.admin-records-table-wrap th {
+  color: white;
+  background: #005382;
+  font-weight: 900;
+}
+
+@media (max-width: 600px) {
+  .home-admin-link {
+    top: 12px;
+    right: 12px;
+    width: 40px;
+    height: 40px;
+  }
+
+  .admin-records-header,
+  .admin-records-content {
+    width: min(100% - 24px, 1040px);
+  }
+
+  .admin-records-toolbar {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .admin-records-actions {
+    justify-content: flex-start;
+  }
+}
+
 .home-loader {
   min-height: 100dvh;
   width: 100%;
